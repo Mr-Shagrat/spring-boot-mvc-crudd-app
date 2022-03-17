@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+<h1>All Users</h1>
+<form th:action="@{/users/new}">
+    <input type="submit" value="Add">
+</form>
+    <table style="border-collapse: collapse">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black">Name</th>
+                <th style="border: 1px solid black">Last name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.getName()}" style="border: 1px solid black">Value</td>
+                <td th:text="${user.getLastName()}" style="border: 1px solid black">Value</td>
+                <td>
+                    <form th:action="@{/users/{id}(id=${user.getId()})}">
+                        <input type="submit" value="More info">
+                    </form>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
